@@ -11,9 +11,13 @@ class NewsMuseumController extends Controller
 {
     public function __invoke(NewsRequest $request)
     {
-        $news = $request->validated();
-        $news = NewsMuseum::find(2);
-        return $news;
+        $new = $request->validated();
+        $news = NewsMuseum::query();
+
+        if (isset($new['title_uz'])) {
+            return $news->where('title_uz', 'ilike',$new['title_uz'])->get();
+        }
+        return $news->find('id');
 
     }
 }
