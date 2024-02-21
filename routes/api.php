@@ -13,14 +13,14 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/zip-download', [ZipController::class, 'downloadZip']);
 
-Route::middleware(['auth:sanctum'])->group(function () {
+//Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResources([
         'about' => AboutMuseumController::class,
         'gallery' => GalleryMuseumController::class,
         'image' => ImageGalleryMuseumController::class,
-        'video' => VideoMuseumController::class,
+        'video' => VideoMuseumController::class
     ]);
-});
+//});
 
 
 
